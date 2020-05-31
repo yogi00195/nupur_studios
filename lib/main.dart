@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:nupur_studios/components/horizontal_listview.dart';
+
+import 'components/demo.dart';
+
+
+
+// my own imports 
+
 
 void main(){
  runApp(
    MaterialApp(
      debugShowCheckedModeBanner: false,
      home: HomePage(),
+     
    )
 
  );
@@ -18,31 +27,34 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
    @override
-  Widget build(BuildContext context) {
-  Widget imageCarousel = new Container(
-    height: 200.0,
-    child: new Carousel(
-      boxFit: BoxFit.cover,
-      images: [
-        AssetImage('images/theme.png'),
-        AssetImage('images/create.png'),
-        AssetImage('images/manage.png'),
-        AssetImage('images/analytics.png')
+   Widget build(BuildContext context) {
+     Widget imageSliderCarousel = new Container(
+       height: 200,
+       child: Carousel(
+         boxFit: BoxFit.fill,
+         images: [
+           AssetImage('assets/images/avatar.jpeg'),
+           AssetImage('assets/images/theme.jpeg'),
+           AssetImage('assets/images/create.jpeg'),
+           AssetImage('assets/images/manage.jpeg'),
+           AssetImage('assets/images/analytics.jpeg'),
+                     
+           
+           
 
-      ],
-      autoplay: true,
-      animationCurve: Curves.fastOutSlowIn,
-      animationDuration: Duration(milliseconds: 1000),
-    ),
-
-  );
+         ],
+       ),
+     );
     return Scaffold(
+      backgroundColor: Colors.indigo[900],
      appBar: new AppBar(
        backgroundColor: Colors.indigo[900],
-       title: Text('Nupur Studios'),
+       title: Text('My First App'),
+       centerTitle: true,
        actions: <Widget>[
          new IconButton(icon: Icon(Icons.search, color: Colors.white,), onPressed: (){}),
-         new IconButton(icon: Icon(Icons.shopping_cart, color: Colors.white,), onPressed: (){})
+         new IconButton(icon: Icon(Icons.message, color: Colors.white,), onPressed: (){}),
+         new IconButton(icon: Icon(Icons.notifications, color: Colors.white,), onPressed: (){})
        ],
       
         ),
@@ -117,9 +129,48 @@ class _HomePageState extends State<HomePage> {
         ),
         body: new ListView(
           children: <Widget>[
-            imageCarousel
+            // image carousel begins here
+            imageSliderCarousel,
+        
+
+         // Row(
+           // children: <Widget> [
+             //Container(
+            
+            //height: 50,
+           
+      
+             //child: Text(
+               //'Select your task',
+                 //   style: TextStyle(fontSize: 30, color: Colors.white),
+       
+                  //), alignment: Alignment(-0.8, 0.0),
+                   
+                    //new IconButton(icon: Icon(Icons.calendar_today,
+                      //   color: Colors.white,), 
+                        //onPressed: (){}),
+                 
+                  //), ], ),
+                       
+              HorizontalList(),        
+                       
+                            
+
+           Container(
+             
+             height: 400.0,
+             
+
+             child: MyApp(),
+           )
+
+            
+
+            
           ],
+         
         ),
+
      );
   
   }
